@@ -28,6 +28,7 @@ import time
 # imports user-defined
 from utils import update_progress_bar, convert_to_altaz, assign_threads
 from plot_star_map import plot_star_map
+from defaults import prog_dir
 
 def check_hemisphere(lat: float) -> tuple:
     """
@@ -176,7 +177,7 @@ def build_sky_maps(lat: float, lon: float, arg_dict: dict, obs_times: list, n_th
 
     
     # read IAU common name catalog
-    filename = './prog_data/IAU-CSN.csv'
+    filename = os.path.join(prog_dir, 'prog_data', 'IAU-CSN.csv')
     iau_table = Table.read(filename, format='csv')
     
     # build IAU dictionary for stars brighter than 2.5 mag

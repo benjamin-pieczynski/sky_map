@@ -24,6 +24,7 @@ release_date = '2024-04-06'
 full_name = f'{prog_name} - {version} - {release_date}'
 
 # globals
+prog_dir = os.path.dirname(os.path.abspath(__file__)) # program file directory
 cwd = os.getcwd() # grabs the current working directory
 default_threads = mp.cpu_count() # grabs the number of available threads
 max_times = 3000 # maximum number of files that will be generated
