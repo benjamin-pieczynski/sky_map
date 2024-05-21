@@ -100,17 +100,17 @@ def check_user_time(obs_time: str):
     
     # check minutes
     try:
-        hh = int(hms[4:6])
+        mm = int(hms[4:6])
     except:
-        hh = hms[4:6]
-        raise ValueError(f'Minutes - {hh} cannot be converted to Type: Int')
+        mm = hms[4:6]
+        raise ValueError(f'Minutes - {mm} cannot be converted to Type: Int')
     
     # check seconds
     try:
-        hh = int(hms[8:])
+        ss = int(hms[8:])
     except:
-        hh = hms[8:]
-        raise ValueError(f'Seconds - {hh} cannot be converted to Type: Int')
+        ss = hms[8:]
+        raise ValueError(f'Seconds - {ss} cannot be converted to Type: Int')
 
     return
 
@@ -254,6 +254,7 @@ def arg_handler(args: dict) -> dict:
     arg_dict['bPaths'] = args['no_paths']
     arg_dict['bTwinkling'] = args['scintillation']
     arg_dict['bTarget'] = True if args['targets'] != None else False
+    arg_dict['bCoords'] = args['no_coords']
     n_comp += 1
     
     update_progress_bar(message, n_comp, n_len, optional='complete', newline=True)  

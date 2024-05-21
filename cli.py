@@ -55,11 +55,12 @@ unit_help = '''Units for the time step. Can set to "days", "hours", "minutes",
 no_planets_help = '''Removes planets from the plot.'''
 no_sun_help  = '''Removes the Sun from the plot.'''
 no_moon_help = '''Removes the Moon from the plot.'''
-no_labels_help = '''Removes the object labels from the plot.'''
+no_labels_help = '''Removes the object labels from the plot. (Does not include alt az labels)'''
 no_background_help = '''Removes the background from the plot.'''
 target_help = '''Provide a target to track. Provides both location and path. Input as "mars venus ... saturn"'''
 no_paths_help = '''Removes the paths for the Sun and Moon.'''
 scintillation_help = '''Adds star scintillation, for star brightness variation between images.'''
+no_coords_help = '''Removes the altaz coordinate labels from the plot'''
 
 # positional arguments
 parser.add_argument('latitude', help=lat_help )
@@ -77,9 +78,8 @@ parser.add_argument('-np', '--no_planets', action='store_false', help=no_planets
 parser.add_argument('-ns', '--no_sun',  action='store_false', help=no_sun_help )
 parser.add_argument('-nm', '--no_moon', action='store_false', help=no_moon_help)
 parser.add_argument('-nl', '--no_labels', action='store_false', help=no_labels_help)
+parser.add_argument('-nc', '--no_coords', action='store_false', help=no_coords_help)
 parser.add_argument('-nb', '--no_background', action='store_true', help=no_background_help)
 parser.add_argument('-ne', '--no_paths', action='store_false', help=no_paths_help)
 parser.add_argument('-sc', '--scintillation', action='store_true', help=scintillation_help)
 parser.add_argument('-t', '--targets', nargs='*', default=None, help=target_help)
-
-# I want to add more options for object paths and plot options

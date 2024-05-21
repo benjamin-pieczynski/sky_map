@@ -139,15 +139,40 @@ def plot_star_map(stars, cp_coords: tuple, common_names: tuple,
     
     # Add semi-transparent filled polygon as a background to mimic grid lines
     # Plot AZ lines
-    for angle in range(0, 361, 30):
-        ax.plot(np.radians([angle, angle]), [10, 90], color='steelblue', alpha=0.5, zorder=2)
+    if arg_dict['bCoords']:
+        bALTlines = False # alt lines filled
         
-    # Plot ALT lines
-    for alt in range(0, 99, 10):
-        ax.plot(np.linspace(0, 2*np.pi, 1000), np.ones(1000)*alt, color='steelblue', alpha=0.5, zorder=2)
+        for az_angle in range(0, 361, 30):
+            ax.plot(np.radians([az_angle, az_angle]), [10, 90], color='steelblue', alpha=0.5, zorder=2)
+            if az_angle != 360:
+                ax.annotate(r'${}.00\degree$'.format(az_angle), xy=(np.radians(az_angle), 90),
+                            color='steelblue', alpha=0.7, zorder=3)
+                ax.annotate(r'${}.00\degree$'.format(az_angle), xy=(np.radians(az_angle), 50),
+                            color='steelblue', alpha=0.7, zorder=3)
+                ax.annotate(r'${}.00\degree$'.format(az_angle), xy=(np.radians(az_angle), 10),
+                            color='steelblue', alpha=0.7, zorder=3)
+                
+            # Plot coordinate values
+            for alt_angle in range(0, 99, 10):
+                if bALTlines == False:
+                    ax.plot(np.linspace(0, 2*np.pi, 1000), np.ones(1000)*alt_angle, color='steelblue', alpha=0.5, zorder=2)
+                    
+                if alt_angle not in [0, 10]:
+                    ax.annotate(r'${}.00\degree$'.format(90-alt_angle), xy=(np.radians(az_angle + 15), alt_angle),
+                                color='steelblue', alpha=0.7, zorder=3)
+            
+            # alt lines have been filled so make sure it is set to true
+            bALTlines = bALTlines or True
         
-    # Plot celestial pole
-    ax.scatter(cp_coords[0], 90-cp_coords[1], marker=cp_coords[2], s=100, color='red', zorder=4)
+        # Plot celestial pole
+        if cp_coords[3] == 'NCP':
+            ax.scatter(cp_coords[0], 90-cp_coords[1], marker=cp_coords[2], s=100, color='red', zorder=4)
+        elif cp_coords[3] == 'SCP':
+            ax.scatter(cp_coords[0], 90+cp_coords[1], marker=cp_coords[2], s=100, color='red', zorder=4)
+        
+        # Plot zenith
+        #ax.annotate(r'${}.00\degree$'.format(90), xy=(0, 0), color='steelblue', alpha=0.7, zorder=3)
+        ax.scatter(0, 0, marker='x', s=150, color='steelblue', alpha=0.5, zorder=2)
     
     # Remove the graph outline
     ax.spines['polar'].set_visible(False)

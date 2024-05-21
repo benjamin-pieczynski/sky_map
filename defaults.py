@@ -8,6 +8,7 @@
 #
 # MODIFICATION HISTORY:
 #   2024-04-06: initial development
+#   2024-05-20: Version 1 release
 #
 #-----------------------------------------------------------------------------------------#
 
@@ -17,7 +18,7 @@ import multiprocessing as mp
 
 # meta data
 prog_name = 'Sky Maps'
-version = 'v0.0.0'
+version = 'v1.0.0'
 programmer = 'Benjamin Pieczynski'
 release_date = '2024-04-06'
 full_name = f'{prog_name} - {version} - {release_date}'
