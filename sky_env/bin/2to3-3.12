@@ -1,5 +1,0 @@
-#!/home/bpieczynski/soft/pyth/sky_map/sky_env/bin/python3.12
-import sys
-from lib2to3.main import main
-
-sys.exit(main("lib2to3.fixes"))
