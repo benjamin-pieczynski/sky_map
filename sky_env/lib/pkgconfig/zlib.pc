@@ -1,0 +1,13 @@
+prefix=/home/bpieczynski/soft/pyth/sky_map/sky_env
+exec_prefix=/home/bpieczynski/soft/pyth/sky_map/sky_env
+libdir=/home/bpieczynski/soft/pyth/sky_map/sky_env/lib
+sharedlibdir=/home/bpieczynski/soft/pyth/sky_map/sky_env/lib
+includedir=/home/bpieczynski/soft/pyth/sky_map/sky_env/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
