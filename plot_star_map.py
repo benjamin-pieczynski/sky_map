@@ -191,7 +191,7 @@ def plot_star_map(stars, cp_coords: tuple, common_names: tuple,
     # formatting filename
     translation_table = str.maketrans({"-": "", ":": ""})
     file_time = obs_time.translate(translation_table)
-    filename = os.path.join(out_dir, "sm_" + file_time + ".png")
+    filename = os.path.join(out_dir, "skymap_" + file_time + ".png")
     
     # write file
     lock.acquire()
